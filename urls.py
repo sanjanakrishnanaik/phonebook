@@ -1,11 +1,8 @@
-from django.contrib import admin
-from django.urls import path, include
-
-from contacts.views import contact_create, contact_delete, contact_detail, contact_update
+from django.urls import path
+from .views import contact_list, contact_detail, contact_create, contact_update, contact_delete
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('contacts.urls')),
+    path('', contact_list, name='contact_list'),
     path('<int:pk>/', contact_detail, name='contact_detail'),
     path('add/', contact_create, name='contact_create'),
     path('<int:pk>/edit/', contact_update, name='contact_update'),
